@@ -2,10 +2,11 @@
 	"ImportPath": "kensa_template",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v74",
-	"Packages": [
-		"./..."
-	],
 	"Deps": [
+		{
+			"ImportPath": "github.com/goji/httpauth",
+			"Rev": "2da839ab0f4df05a6db5eb277995589dadbd4fb9"
+		},
 		{
 			"ImportPath": "github.com/gorilla/context",
 			"Comment": "v1.1-4-gaed02d1",

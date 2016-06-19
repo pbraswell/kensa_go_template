@@ -1,0 +1,17 @@
+{
+  "id": "kensa_template",
+  "api": {
+    "config_vars": [ "KENSA_TEMPLATE_MYADDON_URL" ],
+    "password": "tYpx1jt652dRGIcK",
+    "sso_salt": "zPzckKkGf3XiJaD0",
+    "regions": ["us"],
+    "production": {
+      "base_url": "https://yourapp.com/heroku/resources",
+      "sso_url": "https://yourapp.com/sso/login"
+    },
+    "test": {
+      "base_url": "http://localhost:5000/heroku/resources",
+      "sso_url": "http://localhost:5000/sso/login"
+    }
+  }
+}
