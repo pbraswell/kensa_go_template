@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"html"
+	"log"
 	"net/http"
 	"strings"
 )
@@ -14,10 +15,16 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Kensa Tempalte for Golang!, %q", html.EscapeString(r.URL.Path))
 }
 
-func Resources(w http.ResponseWriter, r *http.Request) {
+func Provision(w http.ResponseWriter, r *http.Request) {
 	c := Configuration{KENSA_TEMPLATE_MYADDON_URL: "https://example.com"}
-	addonResource := AddonResource{Id: "kensa_template", Config: c}
+	// TODO: Need to un-hardcode the resource id
+	addonResource := AddonResource{Id: "123", Config: c}
 	json.NewEncoder(w).Encode(addonResource)
+}
+
+func Deprovision(w http.ResponseWriter, r *http.Request) {
+	log.Printf("In Deprovision!!!")
+	w.WriteHeader(http.StatusOK)
 }
 
 func use(h http.HandlerFunc, middleware ...func(http.HandlerFunc) http.HandlerFunc) http.HandlerFunc {
@@ -52,6 +59,7 @@ func basicAuth(h http.HandlerFunc) http.HandlerFunc {
 			return
 		}
 
+		// TODO: Need to fix the hardcoding here
 		if pair[0] != "kensa_template" && pair[1] != "tYpx1jt652dRGIcK" {
 			http.Error(w, "Not authorized", 401)
 			return
